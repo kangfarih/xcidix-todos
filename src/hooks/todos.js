@@ -10,7 +10,7 @@ async function getTodos() {
 
         return response?.data;
     } catch (error) {
-        return {};
+        return [];
     }
 }
 

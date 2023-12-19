@@ -17,23 +17,30 @@ import {
   View,
 } from 'react-native';
 import { useQuery, } from 'react-query'
-
 import { useGetTodos } from '../hooks/todos';
 
 type SectionProps = PropsWithChildren<{
   //   title: string;
 }>;
+interface Todo {
+  todo: string
+}
 
 function TaskList(): JSX.Element {
-  const { data: { todos }, isLoading } = useGetTodos();
-  console.log(todos);
+  const { data, isLoading } = useGetTodos();
+  console.log(data?.todos[0]);
 
   return (
     <View>
-      {todos.map((dat) => {
-        <Text>{dat}</Text>
-      })}
       <Text>Task List</Text>
+
+      {data?.todos?.map((dat: Array<any>, i: number) => {
+        return (
+          <View key={i}>
+            <Text>{dat.todo}</Text>
+          </View>
+        )
+      })}
     </View>
   );
 }
