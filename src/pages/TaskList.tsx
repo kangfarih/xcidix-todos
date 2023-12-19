@@ -22,7 +22,7 @@ import { useGetTodos } from '../hooks/todos';
 type SectionProps = PropsWithChildren<{
   //   title: string;
 }>;
-interface Todo {
+interface Todos {
   todo: string
 }
 
@@ -34,7 +34,7 @@ function TaskList(): JSX.Element {
     <View>
       <Text>Task List</Text>
 
-      {data?.todos?.map((dat: Array<any>, i: number) => {
+      {data?.todos?.map((dat: Todos, i: number) => {
         return (
           <View key={i}>
             <Text>{dat.todo}</Text>
